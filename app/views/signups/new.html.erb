@@ -1,0 +1,33 @@
+<%= form_for :signup, url: signups_path do |f| %>
+  <%= flash[:alert] %>
+  <%= flash[:notice] %>
+  <% if @signup.errors.any? %>
+  <div id="errorExplanation">
+
+    <h2><%= pluralize(@signup.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+    <ul>
+    <% @signup.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <p>
+    <%= f.label :first_name %>:
+    <%= f.text_field :first_name %><br />
+  </p>
+  <p>
+    <%= f.label :last_name %>:
+    <%= f.text_field :last_name %><br />
+  </p>
+  <p>
+    <%= f.label :email %>:
+    <%= f.text_field :email %><br />
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', signups_path %>
